@@ -1,0 +1,35 @@
+cargo-features = ["per-package-target"]
+
+[package]
+name = "firmware"
+version = "0.1.0"
+edition = "2021"
+forced-target = "riscv32imc-unknown-none-elf"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = { version = "0.4", default-features = false }
+
+esp-println = { version = "0.7.1", features = ["esp32c3"] }
+sht3x = "0.1.1"
+esp32c3-hal = { version = "0.14.0", features = ["embassy", "embassy-time-timg0", "async", "embassy-executor-thread"] }
+esp-backtrace = { version = "0.9.0", features = ["esp32c3", "panic-handler", "exception-handler", "print-uart"] }
+scd4x = { version = "0.2.1", features = ["scd41"], default-features = false }
+esp-wifi = { version = "0.2", features = ["esp32c3", "wifi", "embassy-net"] }
+embassy-time = "0.2.0"
+embassy-executor = { version = "0.4.0", features = ["nightly"] }
+embassy-net = { version = "0.3", features = ["tcp", "dhcpv4", "medium-ethernet", "dns"] }
+static_cell = { version = "2.0.0", features = ["nightly"] }
+smoltcp = { version="0.11", default-features = false, features= ["dns-max-server-count-8"] }
+embedded-svc = {version = "0.26.4", default-features = false, features = ["nightly"]}
+embassy-sync = "0.5.0"
+futures = { version = "0.3.29", default-features = false }
+embedded-io-async = "0.6.1"
+protocol = { version = "0.1.0", path = "../protocol" }
+capnp = { version = "0.18.10", default-features = false }
+reqwless = {version = "0.11.0", default-features = false }
+embedded-nal-async = "0.7.1"
+heapless = "0.8.0"
+pin-utils = "0.1.0"
+thiserror = { version = "1.0", package = "thiserror-core", default-features = false }

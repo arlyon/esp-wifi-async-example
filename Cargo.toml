@@ -1,0 +1,17 @@
+[workspace]
+members = ["crates/*"]
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[patch.crates-io]
+# until PR #66 is merged
+embedded-svc = { git = "https://github.com/arlyon/embedded-svc", branch = "chore/update-embedded-hal" }
+
+# until PR #408 is merged
+esp-wifi = { git = "https://github.com/arlyon/esp-wifi", branch = "chore/update-deps" }
